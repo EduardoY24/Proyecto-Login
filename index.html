@@ -49,7 +49,7 @@
             </ul>
           </div>
         </li>
-        
+
         <li class="nav-item">
           <a class="nav-link sidebar-enlace" href="#" id="enlaceAlumnos">
             <img src="img/icono-alumnos.svg" alt="" width="20" height="20"> Alumnos
@@ -61,7 +61,46 @@
   <!-- ===== Contenido principal ===== -->
   <main id="contenido">
     <!-- Sección Usuarios > Captura (Integrante A): id="seccionCaptura" -->
+    
+    
     <!-- Formulario de alumnos + modal de edad (Integrante B) -->
+         <!-- Sección de bienvenida (Integrante B) -->
+    <section id="seccionInicio" class="container py-4">
+      <h2>Bienvenido al sistema</h2>
+      <p class="text-body-secondary">Abre el menú con el botón de arriba para capturar usuarios o registrar alumnos.</p>
+    </section>
+
+    <!-- Sección Alumnos (Integrante B) -->
+    <section id="seccionAlumnos" class="container py-4 d-none">
+      <h2>Registro de alumnos</h2>
+
+      <!-- novalidate: la validación la hacemos nosotros con JavaScript -->
+      <form id="formAlumno" class="col-md-6" novalidate>
+        <div class="mb-3">
+          <label for="alumnoNombre" class="form-label">Nombre del alumno</label>
+          <input type="text" class="form-control" id="alumnoNombre">
+          <div class="text-danger small" id="errorAlumnoNombre"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="alumnoNumeroControl" class="form-label">Número de control (6 dígitos)</label>
+          <input type="text" class="form-control" id="alumnoNumeroControl" inputmode="numeric">
+          <div class="text-danger small" id="errorAlumnoNumeroControl"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="alumnoFechaNacimiento" class="form-label">Fecha de nacimiento</label>
+          <input type="date" class="form-control" id="alumnoFechaNacimiento">
+          <div class="text-danger small" id="errorAlumnoFecha"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar alumno</button>
+      </form>
+
+      <div class="alert alert-success mt-3 d-none" id="mensajeAlumnoExito" role="alert">
+        Alumno registrado correctamente.
+      </div>
+    </section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
