@@ -80,7 +80,38 @@
   </aside>
   <!-- ===== Contenido principal ===== -->
   <main id="contenido">
-    <!-- Sección Usuarios > Captura (Integrante A): id="seccionCaptura" -->
+    <!-- Sección Usuarios > Captura (Integrante A) -->
+    <section id="seccionCaptura" class="container py-4 d-none">
+      <h2>Captura de usuarios</h2>
+
+      <!-- novalidate: la validación la hacemos con JavaScript -->
+      <form id="formCaptura" class="col-md-6" novalidate>
+        <div class="mb-3">
+          <label for="capUsuario" class="form-label">Nombre de usuario</label>
+          <input type="text" class="form-control" id="capUsuario">
+          <div class="text-danger small" id="errorCapUsuario"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="capCorreo" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="capCorreo">
+          <div class="text-danger small" id="errorCapCorreo"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="capPassword" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="capPassword">
+          <div class="form-text">Mínimo 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.</div>
+          <div class="text-danger small" id="errorCapPassword"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar usuario</button>
+      </form>
+
+      <div class="alert alert-success mt-3 d-none" id="mensajeCapturaExito" role="alert">
+        Usuario capturado correctamente.
+      </div>
+    </section>
     
     
     <!-- Formulario de alumnos + modal de edad (Integrante B) -->
