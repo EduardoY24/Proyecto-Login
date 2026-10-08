@@ -18,7 +18,7 @@
     </button>
     <span class="ms-2 text-body-secondary small">Menú</span>
   </div>
-  
+
   <!-- Sidebar: panel lateral que se desliza desde la izquierda (Offcanvas de Bootstrap) -->
   <aside class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarTitulo">
     <!-- Encabezado del panel, con el botón X para cerrarlo -->
@@ -35,6 +35,21 @@
             <img src="img/icono-inicio.svg" alt="" width="20" height="20"> Inicio
           </a>
         </li>
+        
+        <li class="nav-item">
+          <!-- data-bs-toggle="collapse": Bootstrap abre y cierra el submenú solo -->
+          <a class="nav-link sidebar-enlace" href="#submenuUsuarios" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="submenuUsuarios">
+            <img src="img/icono-usuarios.svg" alt="" width="20" height="20"> Usuarios
+          </a>
+          <div class="collapse" id="submenuUsuarios">
+            <ul class="nav flex-column sidebar-submenu">
+              <li class="nav-item">
+                <a class="nav-link sidebar-enlace" href="#" id="enlaceCaptura">Captura</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        
         <li class="nav-item">
           <a class="nav-link sidebar-enlace" href="#" id="enlaceAlumnos">
             <img src="img/icono-alumnos.svg" alt="" width="20" height="20"> Alumnos
