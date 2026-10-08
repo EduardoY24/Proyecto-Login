@@ -23,3 +23,23 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+/* ===== Estilos del sidebar (Integrante B) ===== */
+
+/* Cada opción del menú: ícono y texto alineados en una fila */
+.sidebar-enlace {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #212529;
+  padding: 0.75rem 1.25rem;
+}
+
+.sidebar-enlace:hover {
+  background-color: #e9ecef;
+}
+
+/* Opciones del submenú: un poco más a la derecha y de menor tamaño */
+.sidebar-submenu .sidebar-enlace {
+  padding-left: 3rem;
+  font-size: 0.95rem;
+}
