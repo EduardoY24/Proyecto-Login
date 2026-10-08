@@ -43,3 +43,61 @@ body {
   padding-left: 3rem;
   font-size: 0.95rem;
 }
+
+/* ===== Estilos propios del login (Integrante A) ===== */
+
+/* Fondo con degradado azul para la pantalla de acceso */
+.pagina-login {
+  background: linear-gradient(135deg, #0d6efd 0%, #4f46e5 100%);
+}
+
+/* Tarjeta blanca centrada donde va el formulario */
+.tarjeta-login {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
+  padding: 2rem 1.75rem;
+  text-align: center;
+}
+
+.tarjeta-login h1 {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem !important;
+}
+
+.subtitulo-login {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Campos con borde azul al escribir en ellos */
+.tarjeta-login .form-control:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+/* Botón de entrar con el mismo degradado del fondo */
+.tarjeta-login .btn-primary {
+  background: linear-gradient(135deg, #0d6efd 0%, #4f46e5 100%);
+  border: none;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tarjeta-login .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(79, 70, 229, 0.4);
+}
+
+/* Aviso de error un poco más pequeño */
+.tarjeta-login .alert {
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+/* Texto del pie de la tarjeta */
+.tarjeta-login .text-body-secondary {
+  margin-top: 1.5rem !important;
+  margin-bottom: 0 !important;
+}
