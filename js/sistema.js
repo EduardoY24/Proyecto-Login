@@ -73,3 +73,83 @@ conectarEnlace("enlaceAlumnos", "seccionAlumnos");
 
 // Al cargar la página, mostramos solo la sección de inicio.
 mostrarSeccion("seccionInicio");
+
+/* ===== 3. Formulario de alumnos: validación del número de control ===== */
+
+var formAlumno = document.getElementById("formAlumno");
+
+/**
+ * Revisa que un texto tenga únicamente dígitos del 0 al 9.
+ *  texto - El texto a revisar.
+ * true si todos los caracteres son dígitos.
+ */
+function soloDigitos(texto) {
+  var todosSonDigitos = true;
+
+  for (var i = 0; i < texto.length; i++) {
+    var caracter = texto.charAt(i);
+
+    if (caracter < "0" || caracter > "9") {
+      todosSonDigitos = false;
+    }
+  }
+
+  return todosSonDigitos;
+}
+
+formAlumno.addEventListener("submit", function (evento) {
+  // Evitamos que el formulario recargue la página.
+  evento.preventDefault();
+
+  var nombre = document.getElementById("alumnoNombre").value.trim();
+  var numeroControl = document.getElementById("alumnoNumeroControl").value.trim();
+
+  var errorNombre = document.getElementById("errorAlumnoNombre");
+  var errorNumeroControl = document.getElementById("errorAlumnoNumeroControl");
+  var mensajeExito = document.getElementById("mensajeAlumnoExito");
+
+  // Ocultamos el mensaje de éxito de un registro anterior.
+  mensajeExito.classList.add("d-none");
+
+  // Esta variable cambia a false si algo no cumple.
+  var formularioValido = true;
+
+  // --- Validación del nombre ---
+  if (nombre === "") {
+    errorNombre.textContent = "Escribe el nombre del alumno.";
+    formularioValido = false;
+  } else {
+    errorNombre.textContent = "";
+  }
+
+  // --- Validación del número de control (exactamente 6 dígitos) ---
+  if (numeroControl === "") {
+    errorNumeroControl.textContent = "Escribe el número de control.";
+    formularioValido = false;
+  } else {
+    if (soloDigitos(numeroControl) === false) {
+      errorNumeroControl.textContent = "El número de control solo puede tener dígitos (0-9).";
+      formularioValido = false;
+    } else {
+      // validarLongitud viene de utileria.js: revisa que NO pase de 6.
+      if (validarLongitud(numeroControl, 6) === false) {
+        errorNumeroControl.textContent = "El número de control no puede tener más de 6 dígitos.";
+        formularioValido = false;
+      } else {
+        // validarLongitud no revisa que lleguen a 6, lo revisamos aquí.
+        if (numeroControl.length < 6) {
+          errorNumeroControl.textContent = "El número de control debe tener exactamente 6 dígitos.";
+          formularioValido = false;
+        } else {
+          errorNumeroControl.textContent = "";
+        }
+      }
+    }
+  }
+
+  // Si todo es válido, mostramos el mensaje de éxito y limpiamos el formulario.
+  if (formularioValido === true) {
+    mensajeExito.classList.remove("d-none");
+    formAlumno.reset();
+  }
+});
