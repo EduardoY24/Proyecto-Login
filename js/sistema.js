@@ -29,7 +29,7 @@ var idsDeSecciones = ["seccionInicio", "seccionCaptura", "seccionAlumnos"];
 
 /**
  * Muestra una sección y oculta las demás. Después cierra el sidebar.
- * @param {string} idSeccionAMostrar - El id de la sección que se quiere ver.
+ * idSeccionAMostrar - El id de la sección que se quiere ver.
  */
 function mostrarSeccion(idSeccionAMostrar) {
   for (var i = 0; i < idsDeSecciones.length; i++) {
@@ -147,8 +147,41 @@ formAlumno.addEventListener("submit", function (evento) {
     }
   }
 
-  // Si todo es válido, mostramos el mensaje de éxito y limpiamos el formulario.
+ // Si todo es válido, mostramos el mensaje de éxito y limpiamos el formulario.
+   // Si el nombre y el número de control son válidos, revisamos la fecha.
   if (formularioValido === true) {
+    var fechaNacimiento = document.getElementById("alumnoFechaNacimiento").value;
+    var errorFecha = document.getElementById("errorAlumnoFecha");
+    errorFecha.textContent = "";
+
+    if (fechaNacimiento === "") {
+      errorFecha.textContent = "Selecciona la fecha de nacimiento.";
+      return;
+    }
+
+    // calcularEdad y esMayorDeEdad vienen de utileria.js.
+    var edad = calcularEdad(fechaNacimiento);
+
+    // Si la edad es negativa, la fecha es del futuro.
+    if (edad < 0) {
+      errorFecha.textContent = "La fecha de nacimiento no puede ser futura.";
+      return;
+    }
+
+    var esMayor = esMayorDeEdad(fechaNacimiento);
+    var textoResultado = "";
+
+    if (esMayor === true) {
+      textoResultado = nombre + " tiene " + edad + " años, por lo tanto SÍ es mayor de edad.";
+    } else {
+      textoResultado = nombre + " tiene " + edad + " años, por lo tanto NO es mayor de edad.";
+    }
+
+    // Escribimos el resultado dentro del modal y lo mostramos.
+    document.getElementById("modalEdadTexto").textContent = textoResultado;
+    var modalEdad = bootstrap.Modal.getOrCreateInstance(document.getElementById("modalEdad"));
+    modalEdad.show();
+
     mensajeExito.classList.remove("d-none");
     formAlumno.reset();
   }
